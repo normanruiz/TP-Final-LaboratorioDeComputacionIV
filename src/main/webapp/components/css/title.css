@@ -1,0 +1,27 @@
+.container-title{
+	display: flex;
+	width: 100%;
+	align-content: start;
+	align-items:center;
+}
+
+.title{
+  font-size: 34px;
+  font-weight: 600;
+  color: #1b2a49; /* Azul marino profundo */
+  text-align: center;
+
+  /* Sombras iluminadas en tonos claros */
+  text-shadow: 
+    1px 1px 4px rgba(255, 255, 255, 1.4),   /* toque iluminado */
+    2px 2px 6px rgba(30, 60, 90, 0.5),      /* azul océano */
+    -1px -1px 4px rgba(112, 111, 111, 0.3); /* gris topo claro */
+
+  letter-spacing: 1px;  /* un poco de aire entre letras */
+  margin: 4px;
+}
+
+.contenedor-titulo{
+	grid-column: span 6 / span 6;
+	border: 2px solid red;
+}

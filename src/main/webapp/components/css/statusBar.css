@@ -1,0 +1,46 @@
+.container-footer-usuario {
+	display: flex;
+	align-content: start;
+	align-items:center;
+	width: 49%;
+}
+
+.container-footer-boton {
+	display: flex;
+	align-items:center;
+	width: 49%;
+}
+
+.container-footer-form {
+	display: flex;
+	width: 100%;
+	flex-direction: row-reverse;
+}
+
+.footer{
+  height: 4%;
+}
+
+.input-disconect {
+  width: 160px;
+  padding: 0.9rem;
+  border: none;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #6366f1, #4f46e5);
+  color: #fff;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: 0.3s;
+  box-shadow: 0 6px 18px rgba(99,102,241,0.6); /* botón con sombra más gruesa */
+}
+
+.input-disconect:hover {
+  background: linear-gradient(135deg, #4f46e5, #4338ca);
+  box-shadow: 0 8px 25px rgba(99,102,241,0.85); /* glow más fuerte al pasar el mouse */
+}
+
+.contenedor-barra-estado{
+    grid-column: span 6 / span 6;
+    grid-column-start: 1;
+	border: 2px solid orange;
+}
