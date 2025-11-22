@@ -1,5 +1,6 @@
 <%@ page import="dominio.entity.BankAccount" %>
 <%@ page import="java.util.ArrayList" %>
+<%@ page import="dominio.entity.BankMovement" %>
 
 <div class="container">
 	
@@ -30,16 +31,28 @@
 					<thead>
 						<tr>
 							<th>#</th>
-							<th>Nombre</th>
-							<th>Apellido</th>
-							<th>Estado</th>
-							<th></th>
-							<th></th>
-							<th></th>
+							<th>Cliente</th>
+							<th>Cuenta</th>
+							<th>Monto</th>
+							<th>Tipo de movimiento</th>
+							<th>Fecha</th>
+							<th>Detalle</th>
 						</tr>
 					</thead>
 					<tbody>
-						
+						<% 
+							ArrayList<BankMovement> bankMovementslist = (ArrayList<BankMovement>)session.getAttribute("bankMovementslist");
+							for ( BankMovement bankMovement : bankMovementslist ) { %>
+								<tr>
+									<td> <%= bankMovement.getId() %> </td>
+									<td> <%= bankMovement.getClient().getName() %> </td>
+									<td> <%= bankMovement.getBankAccount().getAccountNumber() %> </td>
+									<td> <%= bankMovement.getAmount() %> </td>
+									<td> <%= bankMovement.getTypeMovements().toString() %> </td>
+									<td> <%= bankMovement.getCreatedAt() %> </td>
+									<td> <%= bankMovement.getDetail() %> </td>
+								</tr>
+						<% } %>
 					</tbody>
 				</table>
 			</div>

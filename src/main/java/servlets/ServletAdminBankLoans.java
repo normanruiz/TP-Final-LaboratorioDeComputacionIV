@@ -36,8 +36,8 @@ public class ServletAdminBankLoans extends HttpServlet {
 		try {
 			
 			if(request.getParameter("inputBankLoansAuthorized") != null ) {
-				
-				int idBankLoansAuthorized = Integer.parseInt(request.getParameter("inputBankLoansAuthorized"));
+				System.out.println("ServletAdminBankLoans - Autorizando prestamo...");
+				int idBankLoansAuthorized = Integer.parseInt(request.getParameter("idBankLoansAuthorized"));
 				bankLoansDAO = new BankLoansDAO();
 				bankLoansDAO.Authorized(idBankLoansAuthorized);
 				request.getSession().setAttribute("bankLoansList", bankLoansList);
@@ -45,7 +45,7 @@ public class ServletAdminBankLoans extends HttpServlet {
 			}
 			
 			if(request.getParameter("inputBankLoansRefused") != null ) {
-				
+				System.out.println("ServletAdminBankLoans - Rechazando prestamo...");
 				int idBankLoansRefused = Integer.parseInt(request.getParameter("idBankLoansRefused"));
 				bankLoansDAO = new BankLoansDAO();
 				bankLoansDAO.Refused(idBankLoansRefused);
@@ -54,7 +54,7 @@ public class ServletAdminBankLoans extends HttpServlet {
 			}
 			
 			if(request.getParameter("input-abm-bankloans") != null ) {
-				
+				System.out.println("ServletAdminBankLoans - Area de trabajo listado de prestamos...");
 				bankLoansDAO = new BankLoansDAO();
 				bankLoansList = bankLoansDAO.ListPending();
 				request.getSession().setAttribute("bankLoansList", bankLoansList);

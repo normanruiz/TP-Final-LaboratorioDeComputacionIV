@@ -45,6 +45,8 @@ public class ServletClientBankLoans extends HttpServlet {
 			
 			client = new Client((Client)request.getSession().getAttribute("client"));
 			
+			// solicitar pretamo
+			
 			if(request.getParameter("inputApplyBankLoansSave") != null ) {
 				bankLoans = new BankLoans();
 				bankLoans.setRequestedAmount( new BigDecimal((request.getParameter("inputRequestedAmount"))));
@@ -59,7 +61,10 @@ public class ServletClientBankLoans extends HttpServlet {
 			
 			if(request.getParameter("inputApplyBankLoansCancel") != null ) {
 				request.getSession().setAttribute("applyBankLoansOperation", "BankLoansList");
+				request.getSession().removeAttribute("bankAccountList");
 			}
+			
+			// Listado(pantalla general)
 			
 			if(request.getParameter("inputApplyBankLoans") != null ) {
 				
@@ -69,15 +74,16 @@ public class ServletClientBankLoans extends HttpServlet {
 				bankAccountList = bankAccountDAO.ListWithClientId(client.getId());
 				request.getSession().setAttribute("bankAccountList", bankAccountList);
 
-				
 			} else {
 				
 				request.getSession().setAttribute("applyBankLoansOperation", "BankLoansList");
-				bankLoansDAO = new BankLoansDAO();
-				bankLoansList = bankLoansDAO.ListWithClientId(client.getId());
-				request.getSession().setAttribute("bankLoansList", bankLoansList);
-			}			
+				request.getSession().removeAttribute("bankAccountList");
+			}
 			
+			bankLoansDAO = new BankLoansDAO();
+			bankLoansList = bankLoansDAO.ListWithClientId(client.getId());
+			request.getSession().setAttribute("bankLoansList", bankLoansList);
+		
 			requestDispatcher = request.getRequestDispatcher("/home.jsp");
 			requestDispatcher.forward(request, response);
 			

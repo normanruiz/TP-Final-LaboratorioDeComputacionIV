@@ -213,31 +213,20 @@ public class BankLoansDAO implements IBankLoansDAO{
 	}
 
 	@Override
-	public boolean Authorized(int id) {
+	public boolean Authorized(int bankLoansId) {
 
 		System.out.println("Autorizando solicitud de prestamo bancario...");
 		
-		String update;
-		int result;
+		String call;
 		
 		try {
 			
-			update = "UPDATE TPFinalLaboratorioDeComputacionIV.bankLoans\n"
-					+ "SET  status='REFUSED', updatedAt=NOW()\n"
-					+ "WHERE id=?;";
-			
-				this.connection.Connect();
-				this.connection.setPreparedStatement(update);
-				 
-				this.connection.setParameter(1, id);
-
-
-				result = this.connection.executeUpdate();
-				if (result == 1) {
-					return true;
-				} else {
-					return false;
-				}			
+			call = "CALL TPFinalLaboratorioDeComputacionIV.AuthorizeBankLoans( ? );";
+			this.connection.Connect();
+			this.connection.setPrepareCall(call);
+			this.connection.setParameterPC(1, bankLoansId);
+			this.connection.execute();
+			return true;
 			
 		} catch (Exception e) {
 			System.out.println("Falló al intentar autorizar la salicitud de prestamo...");

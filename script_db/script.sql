@@ -146,20 +146,34 @@ BEGIN
     
 END;
 
-CREATE PROCEDURE TPFinalLaboratorioDeComputacionIV.AuthorizeBankLoans(
-    IN bankLoanId INT,
-    IN bankAccountId INT,
-    IN incrementAmount DECIMAL(12,2)
+
+
+
+DROP PROCEDURE IF EXISTS TPFinalLaboratorioDeComputacionIV.AuthorizeBankLoans;
+
+DELIMITER $$
+$$
+CREATE DEFINER=`root`@`%` PROCEDURE `TPFinalLaboratorioDeComputacionIV`.`AuthorizeBankLoans`(
+    IN bankLoanId INT
 )
 BEGIN
 	
+	DECLARE incrementAmount DECIMAL(12,2);
+	DECLARE bankAccountId INT;
+	DECLARE clientId INT;
+	
 	START TRANSACTION;
+	
     -- ACTUALIZAR ESTADO Y FECHA
-    
 	UPDATE TPFinalLaboratorioDeComputacionIV.bankLoans
         SET status = 'AUTHORIZED',
             updatedAt = NOW()
     WHERE id = bankLoanId;
+	
+    -- RECUPERO EL MONTO DEL PRESAMO PARA AGREGAR A LA CUENTA
+	SELECT requestedAmount, bankAccountsId, clientId into incrementAmount, bankAccountId, clientId
+		FROM TPFinalLaboratorioDeComputacionIV.bankLoans
+		WHERE id = bankLoanId;
 
     -- ACREDITAR SALDO Y ACTUALIZAR FECHA
     UPDATE TPFinalLaboratorioDeComputacionIV.bankAccounts
@@ -167,9 +181,18 @@ BEGIN
             updatedAt = NOW()
     WHERE id = bankAccountId;
     
+    -- detallo el movimiento
+    INSERT INTO TPFinalLaboratorioDeComputacionIV.movements
+		( clientId, bankAccountsId, amount, typeMovements, detail, createdAt )
+		VALUES( clientId, bankAccountId, incrementAmount, 'CREATEDBANKLOAN', 'Acreditacion por autorizacion de prestamo.', NOW() );
+    
     COMMIT;
 	
-END;
+END$$
+DELIMITER ;
+
+
+
 
 INSERT INTO TPFinalLaboratorioDeComputacionIV.admins
 (usr, pwd, profile, status, name, lastName, email, createdAt, updatedAt)

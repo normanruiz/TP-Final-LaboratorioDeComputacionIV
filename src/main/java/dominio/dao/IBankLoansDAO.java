@@ -9,9 +9,9 @@ public interface IBankLoansDAO {
 	
 	public boolean Create(int clientId, BankLoans newBankLoans);
 	
-	public boolean Authorized(int id);
+	public boolean Authorized(int bankLoansId);
 	
-	public boolean Refused(int id);
+	public boolean Refused(int bankLoansId);
 	
 	public ArrayList<BankLoans> ListPending();
 	
