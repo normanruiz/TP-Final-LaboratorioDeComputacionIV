@@ -31,7 +31,7 @@ public class ServletHomeAdmin extends HttpServlet {
 		try {
 			System.out.println("ServletHomeAdmin - Ingresando a seccion administracion");
 			admin = new Admin((Admin)request.getSession().getAttribute("admin"));
-			request.getSession().setAttribute("user", admin.getUsr());
+			request.getSession().setAttribute("user", admin.getFullName());
 			
 			if(request.getParameter("input-abm-clients") != null ) {
 				request.getSession().setAttribute("workArea", "adm-abm-client");

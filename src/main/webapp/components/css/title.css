@@ -1,11 +1,16 @@
-.container-title{
+.contenedor-titulo{
+	grid-column: span 6 / span 6;
 	display: flex;
 	width: 100%;
+	padding-top: 1rem;
+	padding-bottom: 1rem;
 	align-content: start;
 	align-items:center;
+	border-radius: 10px;
+  	box-shadow: 8px 8px 12px rgba(0, 0, 0, 0.6), -4px -4px 10px rgba(0, 0, 0, 0.4);
 }
 
-.title{
+.titulo{
   font-size: 34px;
   font-weight: 600;
   color: #1b2a49; /* Azul marino profundo */
@@ -19,9 +24,16 @@
 
   letter-spacing: 1px;  /* un poco de aire entre letras */
   margin: 4px;
+  padding-left: 2rem;
+
 }
 
 .contenedor-titulo{
 	grid-column: span 6 / span 6;
-	border: 2px solid red;
+	display: flex;
+	width: 100%;
+	align-content: start;
+	align-items:center;
+	border-radius: 10px;
+  	box-shadow: 8px 8px 12px rgba(0, 0, 0, 0.6), -4px -4px 10px rgba(0, 0, 0, 0.4);
 }

@@ -1,46 +1,68 @@
-.container-footer-usuario {
-	display: flex;
-	align-content: start;
-	align-items:center;
-	width: 49%;
-}
-
-.container-footer-boton {
-	display: flex;
-	align-items:center;
-	width: 49%;
-}
-
-.container-footer-form {
-	display: flex;
-	width: 100%;
-	flex-direction: row-reverse;
-}
-
-.footer{
-  height: 4%;
-}
-
-.input-disconect {
-  width: 160px;
-  padding: 0.9rem;
-  border: none;
-  border-radius: 10px;
-  background: linear-gradient(135deg, #6366f1, #4f46e5);
-  color: #fff;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: 0.3s;
-  box-shadow: 0 6px 18px rgba(99,102,241,0.6); /* botón con sombra más gruesa */
-}
-
-.input-disconect:hover {
-  background: linear-gradient(135deg, #4f46e5, #4338ca);
-  box-shadow: 0 8px 25px rgba(99,102,241,0.85); /* glow más fuerte al pasar el mouse */
-}
 
 .contenedor-barra-estado{
     grid-column: span 6 / span 6;
-    grid-column-start: 1;
-	border: 2px solid orange;
+    grid-row-start: 9;
+    display: flex;
+	width: 100%;
+	align-content: start;
+	align-items:center;
+	border-radius: 10px;
+  	box-shadow: 8px 8px 12px rgba(0, 0, 0, 0.6), -4px -4px 10px rgba(0, 0, 0, 0.4);
+    justify-content: space-between;
+}
+
+.contenedor-datos-usuario{
+    display: flex;
+	flex: 1;
+    justify-content: flex-start; /* izquierda */
+    align-items: center;     /* centrado vertical */
+    margin: 0;
+    padding: 0;
+}
+
+.datos-usuario{
+	font-size: 1rempx;
+	font-weight: 600;
+	color: #1b2a49;
+	text-align: center;
+	text-shadow: 1px 1px 4px rgba(255, 255, 255, 1.4), 2px 2px 6px rgba(30, 60, 90, 0.5), -1px -1px 4px rgba(112, 111, 111, 0.3);
+	letter-spacing: 1px;
+	margin: 4px;
+	padding-left: 2rem;
+}
+
+.contenedor-boton-desconectar{
+	display: flex;
+	flex: 1;
+    justify-content: flex-end; /* derecha */
+    align-items: center;     /* centrado vertical */
+    margin: 0;
+    padding: 0;
+}
+
+.form-boton-desconectar{
+	margin-right: 1rem;
+}
+
+.boton-desconectar{
+	text-decoration: none;  
+    padding: 8px 16px;
+    cursor: pointer;
+    font-size: 14px;
+	font-size: 1rem;
+	font-weight: 600;
+	color: #1b2a49;
+	text-align: center;
+	border:none;
+	border-radius: 6px;
+	box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.6);
+	letter-spacing: 1px;
+	margin: 4px;
+	width: 20rem;
+}
+
+
+
+.boton-desconectar:hover {
+  	box-shadow: 6px 6px 8px rgba(0, 0, 0, 0.6);
 }

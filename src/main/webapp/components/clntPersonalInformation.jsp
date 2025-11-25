@@ -1,4 +1,6 @@
 <%@ page import="dominio.entity.Client" %>
+<%@ page import="dominio.entity.BankAccount" %>
+<%@ page import="java.util.ArrayList" %>
 
 <% Client clientDetail = (Client)session.getAttribute("client"); %>
 
@@ -40,6 +42,22 @@
 			<p>Fecha de ultima actualizacion: <%= clientDetail.getUpdatedAt() %> </p>
 		</div>
 		
+	</div>
+
+	<div>
+			<% for ( BankAccount bankAccount : clientDetail.getBankAccounts() ) { %>
+
+				<div>
+					<p>Id: <%= bankAccount.getId() %> </p>
+					<p>Numero: <%= bankAccount.getAccountNumber() %> </p>
+					<p>Tipo: <%= bankAccount.getBankAccountType() %> </p>
+					<p>CBU: <%= bankAccount.getCBU() %> </p>
+					<p>Saldo: <%= bankAccount.getSaldo() %> </p>
+					<p>Ultima actualizacion: <%= bankAccount.getUpdatedAt() %> </p>
+					<p>Alta: <%= bankAccount.getCreatedAt() %> </p>
+				</div>
+
+			<% } %>
 	</div>
 
 </div>

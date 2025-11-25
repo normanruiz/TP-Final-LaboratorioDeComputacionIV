@@ -1,34 +1,42 @@
 package dominio.entity;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 public class BankLoansPayments {
 	
 	private int id;
-	private double amount;
-	private short quotaNumber;
-	private short outstandingQuotas;
+	private BankLoans bankLoans;
+	private Client client;
+	private int quotaNumber;
+	private BigDecimal amountQuota;
+	private boolean paid;
 	private LocalDateTime paymentDate;
 	
-	public BankLoansPayments( int id, double amount, short quotaNumber, short outstandingQuotas, LocalDateTime paymentDate ) {
+	public BankLoansPayments(int id, dominio.entity.BankLoans bankLoans, Client client, int quotaNumber,
+			BigDecimal amountQuota, boolean paid, LocalDateTime paymentDate) {
 		super();
 		this.id = id;
-		this.amount = amount;
+		this.bankLoans = bankLoans;
+		this.client = client;
 		this.quotaNumber = quotaNumber;
-		this.outstandingQuotas = outstandingQuotas;
+		this.amountQuota = amountQuota;
+		this.paid = paid;
 		this.paymentDate = paymentDate;
 	}
 
 	public BankLoansPayments() {
-		this( -1, 0.0, ( short )-1, ( short )-1, null );
+		this(-1, null, null, 0, new BigDecimal("0.00"), false, null);
 	}
 	
-	public BankLoansPayments( BankLoansPayments bankLoansPayments ) {
+	public BankLoansPayments(BankLoansPayments bankLoansPayments) {
 		super();
 		this.id = bankLoansPayments.id;
-		this.amount = bankLoansPayments.amount;
+		this.bankLoans = bankLoansPayments.bankLoans;
+		this.client = bankLoansPayments.client;
 		this.quotaNumber = bankLoansPayments.quotaNumber;
-		this.outstandingQuotas = bankLoansPayments.outstandingQuotas;
+		this.amountQuota = bankLoansPayments.amountQuota;
+		this.paid = bankLoansPayments.paid;
 		this.paymentDate = bankLoansPayments.paymentDate;
 	}
 
@@ -40,28 +48,44 @@ public class BankLoansPayments {
 		this.id = id;
 	}
 
-	public double getAmount() {
-		return amount;
+	public BankLoans getBankLoans() {
+		return bankLoans;
 	}
 
-	public void setAmount(double amount) {
-		this.amount = amount;
+	public void setBankLoans(BankLoans bankLoans) {
+		this.bankLoans = bankLoans;
 	}
 
-	public short getQuotaNumber() {
+	public Client getClient() {
+		return client;
+	}
+
+	public void setClient(Client client) {
+		this.client = client;
+	}
+
+	public int getQuotaNumber() {
 		return quotaNumber;
 	}
 
-	public void setQuotaNumber(short quotaNumber) {
+	public void setQuotaNumber(int quotaNumber) {
 		this.quotaNumber = quotaNumber;
 	}
 
-	public short getOutstandingQuotas() {
-		return outstandingQuotas;
+	public BigDecimal getAmountQuota() {
+		return amountQuota;
 	}
 
-	public void setOutstandingQuotas(short outstandingQuotas) {
-		this.outstandingQuotas = outstandingQuotas;
+	public void setAmountQuota(BigDecimal amountQuota) {
+		this.amountQuota = amountQuota;
+	}
+
+	public boolean getPaid() {
+		return paid;
+	}
+
+	public void setPaid(boolean paid) {
+		this.paid = paid;
 	}
 
 	public LocalDateTime getPaymentDate() {

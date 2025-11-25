@@ -45,7 +45,8 @@ public class ServletHomeClient extends HttpServlet {
 		try {
 			
 			client = new Client((Client)request.getSession().getAttribute("client"));
-			request.getSession().setAttribute("user", client.getUsr());
+			request.getSession().setAttribute("user", client.getFullName());
+			
 			
 			if(request.getParameter("input-abm-account-movements") != null ) {
 				request.getSession().setAttribute("workArea", "clnt-account-movements");

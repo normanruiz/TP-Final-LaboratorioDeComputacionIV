@@ -126,4 +126,8 @@ public class Admin {
 		this.updatedAt = updatedAt;
 	}
 	
+	public String getFullName() {
+		return this.lastName + " " + this.name;
+	}
+	
 }

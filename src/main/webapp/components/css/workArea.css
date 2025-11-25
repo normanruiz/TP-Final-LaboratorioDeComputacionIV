@@ -1,12 +1,7 @@
-.areaTrabajo{
-	height: 70%;
-	width: 100%;
-}
 
 .contenedor-area-trabajo {
-	grid-column: span 6 / span 6;
-    grid-row: span 3 / span 3;
-    grid-column-start: 1;
+    grid-column: span 6 / span 6;
+    grid-row: span 6 / span 6;
     grid-row-start: 3;
 	border: 2px solid green;	
 }

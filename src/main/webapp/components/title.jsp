@@ -1,10 +1,10 @@
 
 <% if (session.getAttribute("profile") == "admin") { %>
 	<div class="contenedor-titulo">
-		<p class="title">SECCION ADMINISTRADORES</p>
+		<p class="titulo">SECCION ADMINISTRADORES</p>
 	</div>
 <% } else { %>
 	<div class="contenedor-titulo">
-		<p class="title">SECCION CLIENTES</p>
+		<p class="titulo">SECCION CLIENTES</p>
 	</div>
 <% } %>

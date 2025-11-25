@@ -1,9 +1,11 @@
 
 <div class="contenedor-barra-estado">
-	<div class="container-footer-usuario"> <span> { USUARIO: <%= session.getAttribute("user") %> } </span> </div>
-	<div class="container-footer-boton">
-		<form method="get" action="ServletLogin" class="container-footer-form">
-			<input type="submit" class="input-disconect" name="inputDesconectarse" value="Desconectarse"></input>
+	<div class="contenedor-datos-usuario"> 
+		<p class="datos-usuario"> USUARIO: <%= session.getAttribute("user") %> - Inicio de session: <%= session.getAttribute("loginTime") %> </p> 
+	</div>
+	<div class="contenedor-boton-desconectar">
+		<form method="get" action="ServletLogin" class="form-boton-desconectar">
+			<input type="submit" class="boton-desconectar" name="inputDesconectarse" value="Desconectarse"></input>
 		</form>
 	</div>
 </div>

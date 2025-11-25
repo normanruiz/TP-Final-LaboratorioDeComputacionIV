@@ -15,6 +15,8 @@ public interface IBankLoansDAO {
 	
 	public ArrayList<BankLoans> ListPending();
 	
+	public ArrayList<BankLoans> ListAuthorized(int clientId);
+	
 	public ArrayList<BankLoans> ListWithClientId(int clientId);
 	
 	public BankLoans FindWithId(int id);

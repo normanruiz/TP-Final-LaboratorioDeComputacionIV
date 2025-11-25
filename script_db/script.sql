@@ -94,13 +94,15 @@ CREATE TABLE `bankLoans` (
 CREATE TABLE `bankLoansPayments` (
   `id` INTEGER NOT NULL AUTO_INCREMENT,
   `bankLoandsId` INTEGER NOT NULL,
-  `amount` decimal(12,2) DEFAULT NULL,
+  `clientId` INTEGER NOT NULL,
   `quotaNumber` INTEGER DEFAULT NULL,
-  `outstandingQuotas` INTEGER DEFAULT NULL,
+  `amountQuota` decimal(12,2) DEFAULT NULL,
+  `paid` BOOLEAN DEFAULT 0,
   `paymentDate` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `bankLoandsId` (`bankLoandsId`),
-  CONSTRAINT `bankLoansPayments_ibfk_1` FOREIGN KEY (`bankLoandsId`) REFERENCES `bankLoans` (`id`)
+  CONSTRAINT `bankLoansPayments_ibfk_1` FOREIGN KEY (`bankLoandsId`) REFERENCES `bankLoans` (`id`),
+  CONSTRAINT `bankLoansPayments_ibfk_2` FOREIGN KEY (`clientId`) REFERENCES `clients` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_as_cs;
 
 CREATE TABLE `movements` (
@@ -140,7 +142,7 @@ BEGIN
 	    -- Registrar el movimiento
 		INSERT INTO TPFinalLaboratorioDeComputacionIV.movements
 			( clientId, bankAccountsId, amount, typeMovements, detail, createdAt )
-			VALUES( CLIENTID, BANKACCOUNTID, 10000.00, 'CREATEDBANKACCOUNT', null, NOW() );
+			VALUES( CLIENTID, BANKACCOUNTID, 10000.00, 'CREATEDBANKACCOUNT', "Acreditacion inicial por adicion de cuenta.", NOW() );
 	    
     COMMIT;
     
@@ -160,7 +162,10 @@ BEGIN
 	
 	DECLARE incrementAmount DECIMAL(12,2);
 	DECLARE bankAccountId INT;
-	DECLARE clientId INT;
+	DECLARE clientIdAux INT;
+	DECLARE quotas INT;
+	DECLARE quotaNumber INT;
+	DECLARE amountQuota DECIMAL(12,2);
 	
 	START TRANSACTION;
 	
@@ -169,9 +174,9 @@ BEGIN
         SET status = 'AUTHORIZED',
             updatedAt = NOW()
     WHERE id = bankLoanId;
-	
-    -- RECUPERO EL MONTO DEL PRESAMO PARA AGREGAR A LA CUENTA
-	SELECT requestedAmount, bankAccountsId, clientId into incrementAmount, bankAccountId, clientId
+    
+        -- RECUPERACION DE DATOS
+	SELECT requestedAmount, bankAccountsId, clientId, quotas, amountQuota into incrementAmount, bankAccountId, clientIdAux, quotas, amountQuota
 		FROM TPFinalLaboratorioDeComputacionIV.bankLoans
 		WHERE id = bankLoanId;
 
@@ -184,10 +189,77 @@ BEGIN
     -- detallo el movimiento
     INSERT INTO TPFinalLaboratorioDeComputacionIV.movements
 		( clientId, bankAccountsId, amount, typeMovements, detail, createdAt )
-		VALUES( clientId, bankAccountId, incrementAmount, 'CREATEDBANKLOAN', 'Acreditacion por autorizacion de prestamo.', NOW() );
+		VALUES( clientIdAux, bankAccountId, incrementAmount, 'CREATEDBANKLOAN', 'Acreditacion por autorizacion de prestamo.', NOW() );
+    
+    set quotaNumber = 0;
+    REPEAT
+    	-- HAGO ALGO DE MAGIA
+    	set quotaNumber = quotaNumber + 1;
+    	-- INSERTO EL REGISTRO
+	    INSERT INTO TPFinalLaboratorioDeComputacionIV.bankLoansPayments
+			( bankLoandsId, clientId, quotaNumber, amountQuota, paid, paymentDate )
+			VALUES( bankLoanId, clientIdAux, quotaNumber, amountQuota, 0, NULL );
+		-- EVALUAR SI SIGO
+		UNTIL quotaNumber = quotas
+    END REPEAT;
     
     COMMIT;
 	
+END$$
+DELIMITER ;
+
+DROP PROCEDURE IF EXISTS TPFinalLaboratorioDeComputacionIV.BankLoanQuotaPay;
+
+DELIMITER $$
+$$
+CREATE PROCEDURE TPFinalLaboratorioDeComputacionIV.BankLoanQuotaPay(
+	IN idBankLoansPaymentsAux INT,
+	IN idBankAccountAux INT
+)
+BEGIN
+	
+	DECLARE bankLoandsIdAux INT;
+	DECLARE clientIdAux INT;
+	DECLARE amountQuotaAux DECIMAL(12,2);
+	DECLARE counter INT;
+	
+	START TRANSACTION;
+	
+	-- Recuperacion de datos
+	SELECT bankLoandsId, clientId, amountQuota INTO bankLoandsIdAux, clientIdAux, amountQuotaAux
+		FROM TPFinalLaboratorioDeComputacionIV.bankLoansPayments
+		WHERE id = idBankLoansPaymentsAux;
+	
+	-- Actualizar el registro de la cuota
+	UPDATE TPFinalLaboratorioDeComputacionIV.bankLoansPayments
+		SET paid = 1, paymentDate = NOW()
+		WHERE id = idBankLoansPaymentsAux;
+	
+	-- Actualizar el registro de la cuenta
+	UPDATE TPFinalLaboratorioDeComputacionIV.bankAccounts
+		SET saldo = saldo - amountQuotaAux,
+		updatedAt = NOW()
+		WHERE id = idBankAccountAux;
+	
+	-- Registrar el movimiento
+	INSERT INTO TPFinalLaboratorioDeComputacionIV.movements
+		( clientId, bankAccountsId, amount, typeMovements, detail, createdAt )
+		VALUES( clientIdAux, idBankAccountAux, amountQuotaAux, 'PAYMENTBANKLOAN', 'Pago de cuota de prestamo bancario.', NOW() );
+	
+	-- Verificar si quedan cuotas por abonar, en caso de corresponder actualizar el registro del prestamo
+	SELECT COUNT(ID) INTO counter
+		FROM TPFinalLaboratorioDeComputacionIV.bankLoansPayments
+		WHERE bankLoandsId = bankLoandsIdAux AND paid = 0 ;
+
+	IF counter = 0 THEN
+		UPDATE TPFinalLaboratorioDeComputacionIV.bankLoans
+			SET status = 'CLOSE',
+			updatedAt = NOW()
+			WHERE id = bankLoandsIdAux;
+	END IF;
+	
+	COMMIT;
+	    
 END$$
 DELIMITER ;
 

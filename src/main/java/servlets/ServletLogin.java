@@ -7,6 +7,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.time.LocalDateTime;
 
 import dominio.dao.AdminDAO;
 import dominio.dao.ClientDAO;
@@ -70,6 +71,7 @@ public class ServletLogin extends HttpServlet {
 						request.getSession().setAttribute("admin", admin);
 						request.getSession().setAttribute("profile", "admin");
 						System.out.println("ServletLogin - Credenciales correctas");
+						request.getSession().setAttribute("loginTime", LocalDateTime.now().toString());
 						requestDispatcher = request.getRequestDispatcher("/ServletHomeAdmin");
 					}  else {
 						System.out.println("ServletLogin - Contraseña invalida");
@@ -85,6 +87,7 @@ public class ServletLogin extends HttpServlet {
 							request.getSession().setAttribute("client", client);
 							request.getSession().setAttribute("profile", "client");
 							System.out.println("ServletLogin - Credenciales correctas");
+							request.getSession().setAttribute("loginTime", LocalDateTime.now().toString());
 							requestDispatcher = request.getRequestDispatcher("/ServletHomeClient");
 						}  else {
 							System.out.println("ServletLogin - Contraseña invalida");

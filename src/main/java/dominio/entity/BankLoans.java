@@ -2,6 +2,7 @@ package dominio.entity;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 
 import dominio.entity.Enums.BANKLOANSSTATUS;
 
@@ -19,10 +20,11 @@ public class BankLoans {
 	private LocalDateTime applyDate;
 	private LocalDateTime approvalDate;
 	private LocalDateTime updatedAt;
+	private ArrayList<BankLoansPayments> bankLoansPayments;
 	
-	public BankLoans(int id, Client client, BankAccount bankAccount, BigDecimal requestedAmount, BigDecimal bankInterest, BigDecimal amountWithInterest, int quotas,
+	public BankLoans( int id, Client client, BankAccount bankAccount, BigDecimal requestedAmount, BigDecimal bankInterest, BigDecimal amountWithInterest, int quotas,
 			BigDecimal amountQuota, BANKLOANSSTATUS status, LocalDateTime applyDate, LocalDateTime approvalDate,
-			LocalDateTime updatedAt) {
+			LocalDateTime updatedAt, ArrayList<BankLoansPayments> bankLoansPayments ) {
 		super();
 		this.id = id;
 		this.client = client;
@@ -36,10 +38,11 @@ public class BankLoans {
 		this.applyDate = applyDate;
 		this.approvalDate = approvalDate;
 		this.updatedAt = updatedAt;
+		this.bankLoansPayments = bankLoansPayments;
 	}
 	
 	public BankLoans() {
-		this(-1, null, null, new BigDecimal("0.00"), new BigDecimal("0.00"), new BigDecimal("0.00"), 0, 	new BigDecimal("0.00"), null, null, null, null);
+		this(-1, null, null, new BigDecimal("0.00"), new BigDecimal("0.00"), new BigDecimal("0.00"), 0, 	new BigDecimal("0.00"), null, null, null, null, null);
 	}
 	
 	public BankLoans(BankLoans newBankLoans) {
@@ -56,6 +59,7 @@ public class BankLoans {
 		this.applyDate = newBankLoans.applyDate;
 		this.approvalDate = newBankLoans.approvalDate;
 		this.updatedAt = newBankLoans.updatedAt;
+		this.bankLoansPayments = newBankLoans.bankLoansPayments;
 	}
 
 	public int getId() {
@@ -152,6 +156,14 @@ public class BankLoans {
 
 	public void setUpdatedAt(LocalDateTime updatedAt) {
 		this.updatedAt = updatedAt;
+	}
+
+	public ArrayList<BankLoansPayments> getBankLoansPayments() {
+		return bankLoansPayments;
+	}
+
+	public void setBankLoansPayments(ArrayList<BankLoansPayments> bankLoansPayments) {
+		this.bankLoansPayments = bankLoansPayments;
 	}
 	
 }
