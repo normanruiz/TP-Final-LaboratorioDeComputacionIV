@@ -24,12 +24,19 @@ public class ServletHomeAdmin extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		System.out.println("ServletHomeAdmin - Ingresando a seccion de administracion para usuarios del banco");
+
 		Admin admin;
 
 		RequestDispatcher requestDispatcher = null;
 
 		try {
-			System.out.println("ServletHomeAdmin - Ingresando a seccion administracion");
+			
+			if ( request.getSession().getAttribute("admin") == null ) {
+				requestDispatcher = request.getRequestDispatcher("/login.jsp");	
+				requestDispatcher.forward(request, response);
+			}
+			
 			admin = new Admin((Admin)request.getSession().getAttribute("admin"));
 			request.getSession().setAttribute("user", admin.getFullName());
 			

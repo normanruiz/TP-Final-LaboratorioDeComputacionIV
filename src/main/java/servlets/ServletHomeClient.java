@@ -37,13 +37,19 @@ public class ServletHomeClient extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		System.out.println("ServletHomeClient - Ingresando a seccion de administracion para clientes");
+		
 		Client client;
-		//ClientDAO clientDAO;
 		
 		RequestDispatcher requestDispatcher;
 
 		try {
 			
+			if ( request.getSession().getAttribute("client") == null ) {
+				requestDispatcher = request.getRequestDispatcher("/login.jsp");	
+				requestDispatcher.forward(request, response);
+			}
+		
 			client = new Client((Client)request.getSession().getAttribute("client"));
 			request.getSession().setAttribute("user", client.getFullName());
 			
@@ -69,7 +75,9 @@ public class ServletHomeClient extends HttpServlet {
 				request.getSession().setAttribute("workAreaLabel", "Informacion Personal");
 				requestDispatcher = request.getRequestDispatcher("/ServletClientPersonalInformation");
 			} else {
-				requestDispatcher = request.getRequestDispatcher("/home.jsp");
+				request.getSession().setAttribute("workArea", "clnt-personal-information");
+				request.getSession().setAttribute("workAreaLabel", "Informacion Personal");
+				requestDispatcher = request.getRequestDispatcher("/ServletClientPersonalInformation");
 			}
 			requestDispatcher.forward(request, response);
 		} catch (Exception e) {

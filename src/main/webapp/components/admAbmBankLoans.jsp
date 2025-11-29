@@ -1,6 +1,6 @@
 <%@ page import="dominio.entity.BankLoans" %>
 <%@ page import="java.util.ArrayList" %> 	
-<div class="item">
+<div class="contenedor-prestamos-administrador">
 	<table>
 		<thead>
 			<tr>
@@ -13,6 +13,7 @@
 				<th>Importe de la cuota</th>
 				<th>Cuenta destino</th>				
 				<th>Estado</th>
+				<th>Fecha de solicitud</th>
 				<th></th>
 				<th></th>
 			</tr>
@@ -30,16 +31,33 @@
 						<td> <%= bankLoans.getAmountWithInterest() %> </td>
 						<td> <%= bankLoans.getAmountQuota() %> </td>
 						<td> <%= bankLoans.getBankAccount().getAccountNumber() %> </td>
-						<td> <%= bankLoans.getStatus() %> </td>
+						<td> <%
+								switch (bankLoans.getStatus().toString()) {
+								 case "PENDING":
+							            out.print("Pendiente");
+							            break;
+							        case "AUTHORIZED":
+							            out.print("Autorizado");
+							            break;
+
+							        case "CLOSE":
+							            out.print("Finalizado");
+							            break;
+
+							        default:
+							            out.print("Rechazado");
+							            break;
+							} %> </td>
+						<td> <%= bankLoans.getApplyDate() %> </td>
 						<td>
-							<form method="post" action="ServletAdminBankLoans" class="container-footer-form">
-								<input type="submit" class="input-detalle" name="inputBankLoansAuthorized" value="Aprobar"></input>
+							<form method="post" action="ServletAdminBankLoans" class="form-prestamos-boton-admonistrador">
+								<input type="submit" class="boton-prestamos-admonistrador" name="inputBankLoansAuthorized" value="Aprobar"></input>
 								<input type="hidden" name="idBankLoansAuthorized" value="<%= bankLoans.getId() %>"></input>
 							</form>
 						</td>
 						<td>
-							<form method="post" action="ServletAdminBankLoans" class="container-footer-form">
-								<input type="submit" class="input-detalle" name="inputBankLoansRefused" value="Rechazar"></input>
+							<form method="post" action="ServletAdminBankLoans" class="form-prestamos-boton-admonistrador">
+								<input type="submit" class="boton-prestamos-admonistrador" name="inputBankLoansRefused" value="Rechazar"></input>
 								<input type="hidden" name="idBankLoansRefused" value="<%= bankLoans.getId() %>"></input>
 							</form>
 						</td>

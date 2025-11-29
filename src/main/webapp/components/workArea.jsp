@@ -1,6 +1,9 @@
 
 <% if (session.getAttribute("profile") == "admin") { %>
 	<div class="contenedor-area-trabajo">
+		<div class="contenedor-area-trabajo-titulo"> 
+			<p class="area-trabajo-titulo"> AREA: <%= session.getAttribute("workAreaLabel") %> </p> 
+		</div>
 		<% if (session.getAttribute("workArea") == "adm-abm-client") {%>
 			<jsp:include page="admAbmClients.jsp" />
 		<% } %>
@@ -16,6 +19,9 @@
 	</div>
 <% } else { %>
 	<div class="contenedor-area-trabajo">
+		<div class="contenedor-area-trabajo-titulo"> 
+			<p class="area-trabajo-titulo"> AREA: <%= session.getAttribute("workAreaLabel") %> </p> 
+		</div>
 		<% if (session.getAttribute("workArea") == "clnt-account-movements") {%>
 			<jsp:include page="clntAccountMovements.jsp" />
 		<% } %>

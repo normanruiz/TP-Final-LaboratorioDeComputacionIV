@@ -1,0 +1,32 @@
+.contenedor-chequera-de-pagos{
+	display: grid;
+	justify-items: flex-start;
+    align-items: center;
+    margin-top: 0.4rem;
+    margin-bottom: 0.6rem;
+    margin-right: 1rem;
+    margin-left: 1.2rem;
+    padding: 0.4rem;
+    overflow-y: auto;
+}
+
+.details-chequera-de-pagos {
+	border: 4px, dashed, gray;
+	border-radius: 10px;
+	padding: 1rem;
+	margin: 1rem;
+	background: #ffffff;
+	width: 96%;
+}
+
+.summary-chequera-de-pagos {
+	font-size: 1.1rem;
+	cursor: pointer;
+	padding: 0.5rem 0;
+	font-weight: bold;
+	list-style: none;    
+}
+
+.details-chequera-de-pagos[open] {
+	box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}

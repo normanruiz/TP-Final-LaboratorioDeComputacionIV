@@ -9,6 +9,12 @@
 		<link rel="stylesheet" href="components/css/menuBar.css">
 		<link rel="stylesheet" href="components/css/workArea.css">
 		<link rel="stylesheet" href="components/css/statusBar.css">
+		<link rel="stylesheet" href="components/css/clntPersonalInformation.css">
+		<link rel="stylesheet" href="components/css/clntBankLoans.css">
+		<link rel="stylesheet" href="components/css/clntAccountMovements.css">
+		<link rel="stylesheet" href="components/css/clntPaymentBankLoans.css">
+		<link rel="stylesheet" href="components/css/admAbmBankLoans.css">
+		<link rel="stylesheet" href="components/css/admAbmBankAccounts.css">
 	</head>
 	<body>
 		<% 

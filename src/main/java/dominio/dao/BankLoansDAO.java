@@ -127,9 +127,21 @@ public class BankLoansDAO implements IBankLoansDAO{
 					bankLoans.setStatus(null);
 				}
 				
-				//bankLoans.setApplyDate(result.getTimestamp("applyDate").toLocalDateTime());
-				//bankLoans.setApprovalDate(result.getTimestamp("approvalDate").toLocalDateTime());
-				//bankLoans.setUpdatedAt(result.getTimestamp("updatedAt").toLocalDateTime());
+				if ( result.getTimestamp("applyDate") != null ) {
+					bankLoans.setApplyDate(result.getTimestamp("applyDate").toLocalDateTime());
+				} else {
+					bankLoans.setApplyDate(null);
+				}
+				if ( result.getTimestamp("approvalDate") != null ) {
+					bankLoans.setApprovalDate(result.getTimestamp("approvalDate").toLocalDateTime());
+				} else {
+					bankLoans.setUpdatedAt(null);
+				}
+				if ( result.getTimestamp("updatedAt") != null ) {
+					bankLoans.setUpdatedAt(result.getTimestamp("updatedAt").toLocalDateTime());
+				} else {
+					bankLoans.setUpdatedAt(null);
+				}
 				
 				bankLoansPaymentsDAO = new BankLoansPaymentsDAO();
 				bankLoansPaymentsList = bankLoansPaymentsDAO.ListWithBankLoanId(bankLoans.getId());
@@ -201,9 +213,21 @@ public class BankLoansDAO implements IBankLoansDAO{
 				bankLoans.setStatus(null);
 			}
 			
-			//bankLoans.setApplyDate(result.getTimestamp("applyDate").toLocalDateTime());
-			//bankLoans.setApprovalDate(result.getTimestamp("approvalDate").toLocalDateTime());
-			//bankLoans.setUpdatedAt(result.getTimestamp("updatedAt").toLocalDateTime());
+			if ( result.getTimestamp("applyDate") != null ) {
+				bankLoans.setApplyDate(result.getTimestamp("applyDate").toLocalDateTime());
+			} else {
+				bankLoans.setApplyDate(null);
+			}
+			if ( result.getTimestamp("approvalDate") != null ) {
+				bankLoans.setApprovalDate(result.getTimestamp("approvalDate").toLocalDateTime());
+			} else {
+				bankLoans.setUpdatedAt(null);
+			}
+			if ( result.getTimestamp("updatedAt") != null ) {
+				bankLoans.setUpdatedAt(result.getTimestamp("updatedAt").toLocalDateTime());
+			} else {
+				bankLoans.setUpdatedAt(null);
+			}
 				
 			return bankLoans;
 			
@@ -331,10 +355,22 @@ public class BankLoansDAO implements IBankLoansDAO{
 				} else {
 					bankLoans.setStatus(null);
 				}
-				//bankLoans.setApplyDate(result.getTimestamp("applyDate").toLocalDateTime());
-				//bankLoans.setApprovalDate(result.getTimestamp("approvalDate").toLocalDateTime());
-				//bankLoans.setUpdatedAt(result.getTimestamp("updatedAt").toLocalDateTime());
-				
+
+				if ( result.getTimestamp("applyDate") != null ) {
+					bankLoans.setApplyDate(result.getTimestamp("applyDate").toLocalDateTime());
+				} else {
+					bankLoans.setApplyDate(null);
+				}
+				if ( result.getTimestamp("approvalDate") != null ) {
+					bankLoans.setApprovalDate(result.getTimestamp("approvalDate").toLocalDateTime());
+				} else {
+					bankLoans.setUpdatedAt(null);
+				}
+				if ( result.getTimestamp("updatedAt") != null ) {
+					bankLoans.setUpdatedAt(result.getTimestamp("updatedAt").toLocalDateTime());
+				} else {
+					bankLoans.setUpdatedAt(null);
+				}				
 
 				bankLoansList.add(bankLoans);
 				
@@ -405,9 +441,22 @@ public class BankLoansDAO implements IBankLoansDAO{
 				} else {
 					bankLoans.setStatus(null);
 				}
-				//bankLoans.setApplyDate(result.getTimestamp("applyDate").toLocalDateTime());
-				//bankLoans.setApprovalDate(result.getTimestamp("approvalDate").toLocalDateTime());
-				//bankLoans.setUpdatedAt(result.getTimestamp("updatedAt").toLocalDateTime());
+
+				if ( result.getTimestamp("applyDate") != null ) {
+					bankLoans.setApplyDate(result.getTimestamp("applyDate").toLocalDateTime());
+				} else {
+					bankLoans.setApplyDate(null);
+				}
+				if ( result.getTimestamp("approvalDate") != null ) {
+					bankLoans.setApprovalDate(result.getTimestamp("approvalDate").toLocalDateTime());
+				} else {
+					bankLoans.setUpdatedAt(null);
+				}
+				if ( result.getTimestamp("updatedAt") != null ) {
+					bankLoans.setUpdatedAt(result.getTimestamp("updatedAt").toLocalDateTime());
+				} else {
+					bankLoans.setUpdatedAt(null);
+				}
 				
 				bankLoansPaymentsDAO = new BankLoansPaymentsDAO();
 				bankLoansPaymentsList = bankLoansPaymentsDAO.ListWithBankLoanId(bankLoans.getId());

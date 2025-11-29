@@ -1,0 +1,35 @@
+.contenedor-prestamos-administrador{
+	display: grid;
+	justify-items: flex-start;
+    align-items: center;
+    margin-top: 0.4rem;
+    margin-bottom: 0.6rem;
+    margin-right: 1rem;
+    margin-left: 1.2rem;
+    padding: 0.4rem;
+}
+
+.form-prestamos-boton-admonistrador{
+	
+}
+
+.boton-prestamos-admonistrador{
+	text-decoration: none;  
+    padding: 8px 16px;
+    cursor: pointer;
+    font-size: 14px;
+	font-size: 1rem;
+	font-weight: 600;
+	color: #1b2a49;
+	text-align: center;
+	border:none;
+	border-radius: 6px;
+	box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.6);
+	letter-spacing: 1px;
+	margin: 4px;
+	width: 20rem;
+}
+
+.boton-prestamos-admonistrador:hover {
+  	box-shadow: 6px 6px 8px rgba(0, 0, 0, 0.6);
+}

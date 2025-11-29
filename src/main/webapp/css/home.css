@@ -3,4 +3,89 @@
     grid-template-columns: repeat(6, 1fr);
     grid-template-rows: repeat(9, 1fr);
     gap: 10px;
+    height: 98vh;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;       /* Quita espacios entre celdas */
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    margin-top: 20px;
+}
+
+thead {
+    background-color: #2d4a6b;       /* Azul profesional */
+    color: white;
+}
+
+th, td {
+    padding: 10px 12px;              /* Espaciado interno */
+    text-align: left;
+    border-bottom: 1px solid #ccc;   /* Línea sutil */
+}
+
+/* Alternancia de filas */
+tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+/* Ajustes opcionales */
+th {
+    font-weight: bold;
+}
+
+td {
+    color: #333;
+}
+
+/* Radio base */
+input[type="radio"] {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #1b2a49;
+    border-radius: 50%;
+    cursor: pointer;
+    position: relative;
+    vertical-align: middle;
+    margin-right: 6px;
+    transition: border-color .2s ease;
+}
+
+/* Punto interno: pequeño, centrado perfecto y sin escala */
+input[type="radio"]::after {
+    content: "";
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background-color: #1b2a49;
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    transition: opacity .15s ease;
+}
+
+/* Seleccionado */
+input[type="radio"]:checked::after {
+    opacity: 1;
+}
+
+/* Hover */
+input[type="radio"]:hover {
+    border-color: #2d3b5c;
+}
+
+/* Disabled */
+input[type="radio"]:disabled {
+    border-color: #bcbcbc;
+    background-color: #f1f1f1;
+    cursor: not-allowed;
+}
+
+input[type="radio"]:disabled::after {
+    background-color: #bcbcbc;
 }

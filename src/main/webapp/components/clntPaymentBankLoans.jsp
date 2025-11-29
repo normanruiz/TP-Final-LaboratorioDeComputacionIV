@@ -3,19 +3,19 @@
 <%@ page import="dominio.entity.BankLoansPayments" %>
 <%@ page import="dominio.entity.BankAccount" %>
 
-<div class="item">
+<div class="contenedor-chequera-de-pagos">
 
 			<% 
 				ArrayList<BankLoans> bankLoansAuthorizedList = (ArrayList<BankLoans>)session.getAttribute("bankLoansAuthorizedList");
 				for ( BankLoans bankLoans : bankLoansAuthorizedList ) { %>
-					<div class="item">
-						<h4><%= bankLoans.getId() %> - <%= bankLoans.getRequestedAmount() %> - <%= bankLoans.getApplyDate() %></h4>
+					<details class="details-chequera-de-pagos">
+						<summary class="summary-chequera-de-pagos">Pretamo: Numero <%= bankLoans.getId() %> - Importe <%= bankLoans.getRequestedAmount() %> - Fecha de solicitud <%= bankLoans.getApplyDate() %></summary>
 						<table>
 							<thead>
 								<tr>
 									<th>Numero de cuota</th>
-									<th>Importe</th>
-									<th>Estado</th>
+									<th>Importe de la cuota</th>
+									<th>Estado de la cuota</th>
 									<th>Fecha de pago</th>
 									<th>Cuenta origen</th>
 									<th></th>
@@ -30,7 +30,10 @@
 										<td> <%= bankLoansPayments.getQuotaNumber() %> </td>
 										<td> <%= bankLoansPayments.getAmountQuota() %> </td>
 										<td> <%= bankLoansPayments.getPaid() == false ? "Pendiente" : "Pagado" %> </td>
-										<td> <%= bankLoansPayments.getPaymentDate() %> </td>
+										<td> <% 
+											if ( bankLoansPayments.getPaymentDate() != null ) {
+												out.print(bankLoansPayments.getPaymentDate());
+											}%> </td>
 				
 										<form method="post" action="ServletClientPaymentBankLoans" class="container-footer-form">
 
@@ -54,7 +57,7 @@
 								<% } %>
 							</tbody>
 						</table>
-					</div>
+					</details>
 			<% } %>
 
 </div>

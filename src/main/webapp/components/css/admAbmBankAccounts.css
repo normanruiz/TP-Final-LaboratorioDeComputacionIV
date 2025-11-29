@@ -1,0 +1,104 @@
+.contenedor-cuentas-administrador{
+	display: grid;
+	justify-items: flex-start;
+    align-items: center;
+    margin-top: 0.4rem;
+    margin-bottom: 0.6rem;
+    margin-right: 1rem;
+    margin-left: 1.2rem;
+    padding: 0.4rem;
+}
+
+.details-cuentas-administrador{
+	border: 4px, dashed, gray;
+	border-radius: 10px;
+	padding: 1rem;
+	margin: 1rem;
+	background: #ffffff;
+	width: 96%;
+}
+
+.details-cuentas-administrador[open] {
+	box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.summary-cuentas-administrador{
+	font-size: 1.1rem;
+	cursor: pointer;
+	padding: 0.5rem 0;
+	font-weight: bold;
+	list-style: none;    
+}
+
+.boton-cuentas-admonistrador{
+	text-decoration: none;  
+    padding: 8px 16px;
+    cursor: pointer;
+    font-size: 14px;
+	font-size: 1rem;
+	font-weight: 600;
+	color: #1b2a49;
+	text-align: center;
+	border:none;
+	border-radius: 6px;
+	box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.6);
+	letter-spacing: 1px;
+	margin: 4px;
+	width: 20rem;
+}
+
+.boton-cuentas-admonistrador:hover {
+  	box-shadow: 6px 6px 8px rgba(0, 0, 0, 0.6);
+}
+
+.boton-cuentas-admonistrador:disabled {
+    background-color: #c4c4c4;     /* gris claro para indicar inactividad */
+    color: #6b6b6b;                /* texto apagado */
+    box-shadow: none;              /* elimina sombras para que no parezca clickeable */
+    cursor: not-allowed;           /* icono claro de deshabilitado */
+    opacity: 0.7;                  /* efecto visual suave */
+    transform: none !important;    /* evita que se mueva o anime */
+}
+
+.boton-cuentas-admonistrador:disabled:hover {
+    box-shadow: none;
+    transform: none;
+}
+
+.datos-cuentas-detalle-administrador{
+	font-size: 1rem;
+	font-weight: 600;
+	color: #1b2a49;
+	text-align: start;
+	text-shadow: 1px 1px 4px rgba(255, 255, 255, 1.4), 2px 2px 6px rgba(30, 60, 90, 0.5), -1px -1px 4px rgba(112, 111, 111, 0.3);
+	letter-spacing: 1px;
+	padding-left: 2rem;
+}
+
+.label-general{
+	font-size: 1.2rem;
+	font-weight: 600;
+	color: #1b2a49;
+	text-align: start;
+	text-shadow: 1px 1px 4px rgba(255, 255, 255, 1.4), 2px 2px 6px rgba(30, 60, 90, 0.5), -1px -1px 4px rgba(112, 111, 111, 0.3);
+	letter-spacing: 1px;
+	margin: 0.6rem;
+
+}
+
+.label-input-radio{
+	font-size: 1rem;
+	font-weight: 600;
+	color: #1b2a49;
+	text-align: start;
+	text-shadow: 1px 1px 4px rgba(255, 255, 255, 1.4), 2px 2px 6px rgba(30, 60, 90, 0.5), -1px -1px 4px rgba(112, 111, 111, 0.3);
+	letter-spacing: 1px;
+	margin: 0.6rem;
+}
+
+.contenedor-label-cuentas-adicion-administrador{
+	margin-top: 1rem;
+	margin-bottom: 1rem;
+}
+
+

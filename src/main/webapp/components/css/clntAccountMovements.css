@@ -1,0 +1,69 @@
+.contenedor-movimientos-cliente{
+	display: block;
+}
+
+.contenedor-lista-cuenta-movimientos-cliente{
+    display: grid;
+	width: 100%;
+	align-content: start;
+	align-items:center;
+	border-radius: 10px;
+    margin-top: 0.4rem;
+    margin-bottom: 0.6rem;
+    margin-right: 1rem;
+    margin-left: 1.2rem;
+    padding: 0.4rem;
+
+}
+
+.lista-cuenta-movimientos-cliente{
+	list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 100%;
+}
+
+.item-cuenta-movimientos-cliente{
+	
+}
+
+.formulario-cuenta-movimientos-cliente{
+	
+}
+
+.boton-cuenta-movimientos-cliente{
+	text-decoration: none;  
+    padding: 8px 16px;
+    cursor: pointer;
+    font-size: 14px;
+	font-size: 1rem;
+	font-weight: 600;
+	color: #1b2a49;
+	text-align: center;
+	border:none;
+	border-radius: 6px;
+	box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.6);
+	letter-spacing: 1px;
+	margin: 4px;
+	width: 20rem;
+}
+
+.boton-cuenta-movimientos-cliente:hover {
+  	box-shadow: 6px 6px 8px rgba(0, 0, 0, 0.6);
+}
+						
+.contendor-movimientos-cliente-detalle{
+		margin-left: 1rem;
+	margin-right: 1rem;
+	padding-left: 1rem;
+	padding-right: 1rem;
+	overflow-y: auto;
+	height: 40rem;
+}
+
+.cliente-listado-prestamos-bancarios-aviso{
+	
+}

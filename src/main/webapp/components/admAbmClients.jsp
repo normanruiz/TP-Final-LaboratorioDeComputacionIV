@@ -14,13 +14,13 @@
   	
   	<div class="item">
 	  	<% if (session.getAttribute("abmClientOperation") == "new") { %>
-			<jsp:include page="clientNewModify.jsp" />
+			<jsp:include page="admClientNewModify.jsp" />
 		<% } else if (session.getAttribute("abmClientOperation") == "modify") { %>
-			<jsp:include page="clientNewModify.jsp" />
+			<jsp:include page="admClientNewModify.jsp" />
 		<% } else if (session.getAttribute("abmClientOperation") == "detail") { %>
-			<jsp:include page="clientDetail.jsp" />
+			<jsp:include page="admClientDetail.jsp" />
 		<% } else { %>
-			<jsp:include page="clientsList.jsp" />
+			<jsp:include page="admClientsList.jsp" />
 		<% } %>
 	</div>
 	

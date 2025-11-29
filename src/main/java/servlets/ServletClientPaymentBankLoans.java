@@ -52,7 +52,6 @@ public class ServletClientPaymentBankLoans extends HttpServlet {
 			
 			bankLoansDAO = new BankLoansDAO();
 			bankLoansAuthorizedList = bankLoansDAO.ListAuthorized(client.getId());
-			System.out.println(bankLoansAuthorizedList.size());
 			request.getSession().setAttribute("bankLoansAuthorizedList", bankLoansAuthorizedList);
 			bankAccountDAO = new BankAccountDAO();
 			bankAccountList = bankAccountDAO.ListWithClientId(client.getId());

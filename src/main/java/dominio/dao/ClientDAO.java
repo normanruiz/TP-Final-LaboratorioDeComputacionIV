@@ -156,7 +156,7 @@ public class ClientDAO implements IClientDAO{
 		try {
 			System.out.println("Listando clientes...");
 			query = "SELECT id, usr, pwd, status, DNI, CUIL, name, lastName, sex, nationality, birthdate, address, city, state, email, phone, createdAt, updatedAt\n"
-					+ "FROM TPFinalLaboratorioDeComputacionIV.clients;";
+					+ "FROM TPFinalLaboratorioDeComputacionIV.clients ORDER BY id DESC;";
 			this.connection.Connect();
 			ResultSet result = this.connection.executeQuery(query);
 			while(result.next()) {

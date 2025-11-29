@@ -1,7 +1,5 @@
 package dominio.dao;
 
-import java.math.BigDecimal;
-import java.math.RoundingMode;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
@@ -59,7 +57,7 @@ public class BankLoansPaymentsDAO implements IBankLoansPaymentsDAO {
 			
 			query = "SELECT id, bankLoandsId, clientId, quotaNumber, amountQuota, paid, paymentDate\n"
 					+ "	FROM TPFinalLaboratorioDeComputacionIV.bankLoansPayments\n"
-					+ "	WHERE bankLoandsId = " + bankLoanId + ";";
+					+ "	WHERE bankLoandsId = " + bankLoanId + " ORDER BY paid ASC, id ASC;";
 			
 			this.connection.Connect();
 			ResultSet result = this.connection.executeQuery(query);

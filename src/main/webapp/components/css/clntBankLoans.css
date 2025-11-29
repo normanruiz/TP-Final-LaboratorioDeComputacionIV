@@ -1,0 +1,192 @@
+.contenedor-cliente-prestamos-bancarios{
+	display: block;
+}
+
+.contenedor-cliente-prestamos-bancarios-boton-solicitar{
+	display: grid;
+	justify-items: flex-start;
+    align-items: center;
+    margin-top: 0.4rem;
+    margin-bottom: 0.6rem;
+    margin-right: 1rem;
+    margin-left: 1.2rem;
+    padding: 0.4rem;
+}
+
+.cliente-prestamos-bancarios-formulario-boton-solicitar{
+	
+}
+
+.boton-solicitar-prestamos-bancarios{
+	text-decoration: none;  
+    padding: 8px 16px;
+    cursor: pointer;
+    font-size: 14px;
+	font-size: 1rem;
+	font-weight: 600;
+	color: #1b2a49;
+	text-align: center;
+	border:none;
+	border-radius: 6px;
+	box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.6);
+	letter-spacing: 1px;
+	margin: 4px;
+	width: 20rem;
+}
+
+.boton-solicitar-prestamos-bancarios:hover {
+  	box-shadow: 6px 6px 8px rgba(0, 0, 0, 0.6);
+}
+
+.contenedor-cliente-listado-prestamos-bancarios{
+	margin-left: 1rem;
+	margin-right: 1rem;
+	padding-left: 1rem;
+	padding-right: 1rem;
+	overflow-y: auto;
+	height: 40rem;
+}
+
+.cliente-listado-prestamos-bancarios-aviso{
+	font-size: 1rem;
+	font-weight: 600;
+	color: #1b2a49;
+	text-align: start;
+	text-shadow: 1px 1px 4px rgba(255, 255, 255, 1.4), 2px 2px 6px rgba(30, 60, 90, 0.5), -1px -1px 4px rgba(112, 111, 111, 0.3);
+	letter-spacing: 1px;
+	margin: 4px;
+	padding-left: 2rem;
+}
+
+.contenedor-cliente-solicitud-prestamos-bancarios{
+	display: block;
+    flex: 1;
+	justify-items: flex-start;
+    align-items: center;
+	border: 4px, dashed, gray;
+    border-radius: 6px;
+    margin: 1rem;
+    padding: 1rem;
+}
+
+.cliente-solicitud-prestamos-bancarios-titulo{
+	font-size: 1rem;
+	font-weight: 600;
+	color: #1b2a49;
+	text-align: center;
+	text-shadow: 1px 1px 4px rgba(255, 255, 255, 1.4), 2px 2px 6px rgba(30, 60, 90, 0.5), -1px -1px 4px rgba(112, 111, 111, 0.3);
+	letter-spacing: 1px;
+	margin: 4px;
+	padding-left: 2rem;
+}
+
+.formulario-cliente-solicitud-prestamos-bancarios{
+	
+}
+
+.contenedor-cliente-inputs-solicitud-prestamos-bancarios{
+	display: grid;
+    flex: 1;
+	justify-items: flex-start;
+    align-items: center;
+    border-radius: 6px;
+    padding: 2rem;
+}
+
+.label-cliente-solicitud-prestamos-bancarios{
+	font-size: 0.9rem;
+	font-weight: 600;
+	color: #1b2a49;
+	text-align: center;
+	text-shadow: 1px 1px 4px rgba(255, 255, 255, 1.4), 2px 2px 6px rgba(30, 60, 90, 0.5), -1px -1px 4px rgba(112, 111, 111, 0.3);
+	letter-spacing: 1px;
+	margin: 4px;
+
+}
+
+.inputnumber-cliente-solicitud-prestamos-bancarios{
+	width: 100%;
+    padding: 10px 14px;
+    font-size: 16px;
+    background-color: #f8f9fa;
+    border: 2px solid #ced4da;
+    border-radius: 8px;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.inputnumber-cliente-solicitud-prestamos-bancarios:focus {
+    border-color: #4a90e2;
+    box-shadow: 0 0 6px rgba(74, 144, 226, 0.4);
+    background-color: #fff;
+}
+
+.select-cliente-solicitud-prestamos-bancarios{
+	width: 100%;
+    padding: 10px 14px;
+    font-size: 16px;
+    background-color: #f8f9fa;
+    border: 2px solid #ced4da;
+    border-radius: 8px;
+    outline: none;
+    cursor: pointer;
+    transition: border-color 0.2s, box-shadow 0.2s, background-color 0.2s;
+}
+
+.select-cliente-solicitud-prestamos-bancarios:focus {
+    border-color: #4a90e2;
+    box-shadow: 0 0 6px rgba(74, 144, 226, 0.4);
+    background-color: #fff;
+}
+
+.contenedor-cliente-botones-solicitud-prestamos-bancarios{
+	display: block;
+    flex: 1;
+	justify-items: flex-start;
+    align-items: center;
+    border-radius: 6px;
+    padding: 1rem;
+}
+
+.boton-cancelar-solicitud-prestamos-bancarios{
+		text-decoration: none;  
+    padding: 8px 16px;
+    cursor: pointer;
+    font-size: 14px;
+	font-size: 1rem;
+	font-weight: 600;
+	color: #1b2a49;
+	text-align: center;
+	border:none;
+	border-radius: 6px;
+	box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.6);
+	letter-spacing: 1px;
+	margin: 4px;
+	width: 20rem;
+}
+
+.boton-cancelar-solicitud-prestamos-bancarios:hover {
+  	box-shadow: 6px 6px 8px rgba(0, 0, 0, 0.6);
+}
+
+.boton-guardar-solicitud-prestamos-bancarios{
+		text-decoration: none;  
+    padding: 8px 16px;
+    cursor: pointer;
+    font-size: 14px;
+	font-size: 1rem;
+	font-weight: 600;
+	color: #1b2a49;
+	text-align: center;
+	border:none;
+	border-radius: 6px;
+	box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.6);
+	letter-spacing: 1px;
+	margin: 4px;
+	width: 20rem;
+}
+
+.boton-guardar-solicitud-prestamos-bancarios:hover {
+  	box-shadow: 6px 6px 8px rgba(0, 0, 0, 0.6);
+}
+

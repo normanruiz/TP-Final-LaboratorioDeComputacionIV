@@ -1,23 +1,16 @@
 
-<div class="">
+<div class="contenedor-cliente-prestamos-bancarios">
 	
-	<div class="">
-  		<div class=""> 
-  			<span> AREA: <%= session.getAttribute("workAreaLabel") %> </span> 
-  		</div>
-		<div class="">
-			<form method="post" action="ServletClientBankLoans" class="container-footer-form">
-				<input type="submit" class="input-disconect" name="inputApplyBankLoans" value="Solictar prestamo"></input>
-			</form>
-		</div>
-  	</div>
-  	
-  	<div class="item">
-	  	<% if (session.getAttribute("applyBankLoansOperation") == "applyBankLoans") { %>
-			<jsp:include page="clntBankLoansApply.jsp" />
-		<% } else { %>
-			<jsp:include page="clntBankLoansList.jsp" />
-		<% } %>
+	<div class="contenedor-cliente-prestamos-bancarios-boton-solicitar">
+		<form method="post" action="ServletClientBankLoans" class="cliente-prestamos-bancarios-formulario-boton-solicitar">
+			<input type="submit" class="boton-solicitar-prestamos-bancarios" name="inputApplyBankLoans" value="Solicitar prestamo"></input>
+		</form>
 	</div>
-	
+
+  	<% if (session.getAttribute("applyBankLoansOperation") == "applyBankLoans") { %>
+		<jsp:include page="clntBankLoansApply.jsp" />
+	<% } else { %>
+		<jsp:include page="clntBankLoansList.jsp" />
+	<% } %>
+
 </div>

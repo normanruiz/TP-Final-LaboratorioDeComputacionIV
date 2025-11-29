@@ -39,7 +39,7 @@ public class BankMovementDAO implements IBankMovementDAO {
 			
 			query = "SELECT id, clientId, bankAccountsId, amount, typeMovements, detail, createdAt\n"
 					+ "	FROM TPFinalLaboratorioDeComputacionIV.movements\n"
-					+ "	WHERE clientId = " + clientId + " AND bankAccountsId = " + bankAccountId + ";";
+					+ "	WHERE clientId = " + clientId + " AND bankAccountsId = " + bankAccountId + " ORDER BY id DESC;";
 			
 			this.connection.Connect();
 			ResultSet result = this.connection.executeQuery(query);
